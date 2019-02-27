@@ -1,0 +1,208 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   Created By Aditya Shakya.
+;
+;==========================================================
+
+[color]
+
+trans = #00000000
+white = #FFFFFF
+black = #000000
+red = #FF0000
+
+bg = #00000000
+fg = #FFFFFF
+fg-alt = #A9ABB0
+
+;==========================================================
+
+[bar/bottom]
+monitor = DP2
+dpi = 201
+width = 100$%
+height = 70
+offset-x = 2%
+offset-y = 2%
+bottom = true
+fixed-center = false
+line-size = 2
+
+background = ${color.bg}
+foreground = ${color.fg}
+
+font-0 = "System San Francisco Display:style=Light:pixelsize=11;2"
+font-1 = "Iosevka Nerd Font Mono:pixelsize=17;3"
+
+modules-left = workspaces
+modules-right = 
+
+
+[bar/main]
+monitor = ${env:MONITOR:}
+dpi = 196
+width = 100$%
+height = 70
+offset-x = 2%
+offset-y = 2%
+bottom = false
+fixed-center = false
+line-size = 2
+
+background = ${color.bg}
+foreground = ${color.fg}
+
+font-0 = "System San Francisco Display:style=Light:pixelsize=11;2"
+font-1 = "Iosevka Nerd Font Mono:pixelsize=17;3"
+
+modules-left = 
+modules-right = ipaddress volume battery network date 
+ 
+;== Modules ========================================================
+
+[module/workspaces]
+type = internal/i3
+pin-workspaces = false
+enable-click = true
+enable-scroll = false
+format-padding = 0
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;❻
+ws-icon-6 = 7;❼
+ws-icon-7 = 8;❽
+ws-icon-8 = 9;❾
+ws-icon-9 = 10;❿
+
+
+format = <label-state>
+format-background = ${color.bg}
+
+label-focused = %icon%
+label-unfocused = %icon%
+label-visible = %icon%
+label-occupied = %icon%
+label-urgent = %icon%
+label-empty = %icon%
+
+label-empty-padding = 4
+label-active-padding = 4
+label-urgent-padding = 4
+label-occupied-padding = 4
+label-focused-padding = 4
+label-visible-padding = 4
+
+label-empty-foreground = ${color.fg}
+label-active-foreground = ${color.fg}
+label-urgent-foreground = ${color.fg}
+label-occupied-foreground = ${color.fg}
+label-visible-foreground = ${color.fg}
+
+label-focused-background = #33ffffff
+label-focused-underline = #bbff9800
+
+
+;==========================================================
+
+;==========================================================
+
+[module/ipaddress]
+type = custom/script
+exec = /home/tevans/.config/polybar/scripts/localip.sh
+format-background = ${color.bg}
+format-padding = 2
+tail = true
+
+[module/battery]
+type = internal/battery
+full-at = 95
+time-format = %H:%M
+adapter = AC
+battery = BAT0
+format-charging = <animation-charging> <label-charging>
+format-charging-background = ${color.bg}
+format-full-background = ${color.bg}
+format-charging-padding = 2
+format-full-padding = 2
+label-charging = %percentage%%
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-background = ${color.bg}
+format-discharging-padding = 2
+label-discharging = %percentage%% (%time%)
+format-full = <label-full>
+
+format-full-prefix = "  "
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+
+ramp-capacity-0-foreground = ${color.red}
+ramp-capacity-1-foreground = ${color.red}
+ramp-capacity-foreground   = ${color.fg}
+bar-capacity-width = 10
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
+
+animation-charging-framerate = 750
+
+[module/volume]
+type = internal/alsa
+format-volume = <ramp-volume> <label-volume>
+format-volume-padding = 4
+format-volume-background = ${color.bg}
+label-volume = %percentage%%
+label-muted = "婢"
+label-muted-background = ${color.bg}
+label-muted-padding = 2
+
+ramp-volume-0 = 奄
+ramp-volume-1 = 奄
+ramp-volume-2 = 奔
+ramp-volume-3 = 奔
+ramp-volume-4 = 墳
+ramp-volume-5 = 墳
+ramp-volume-6 = 墳
+
+[module/network]
+type = custom/script
+exec = /home/tevans/.config/polybar/scripts/check-network
+format-background = ${color.bg}
+format-padding = 4
+tail = true
+
+[module/date]
+type = internal/date
+interval = 30
+label =  %time%
+label-padding = 4
+label-background = ${color.bg}
+time =  %I:%M %p
+time-alt =  %Y-%m-%d
+
+;== EOF ========================================================

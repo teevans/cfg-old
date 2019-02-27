@@ -1,0 +1,206 @@
+# Setup Work Monitors
+# Startup Polybar
+exec_always --no-startup-id ~/.config/polybar/polybar.sh 
+exec_always --no-startup-id compton &
+exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
+# Set Key Speed
+exec xset r rate 150 60
+# Setup the wallpaper
+exec sh ~/.fehbg
+# Start Compositor
+
+
+# Set Mod to Windows Key
+set $mod Mod4
+
+bindsym $mod+z exec ~/.config/i3/kill_compton.sh
+bindsym $mod+Shift+p exec betterlockscreen --lock blur
+
+exec xautolock -detectsleep \
+  -time 3 -locker "betterlockscreen --lock blur" \
+  -notify 30 \
+  -notifier "notify-send -t 29000 -- 'LOCKING screen in 30 seconds'"
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec terminator
+
+# kill focused window
+bindsym $mod+q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+b split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+d focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec i3-msg exit
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+# Move floating windows using keys
+bindsym $mod+m mode "move" focus floating
+mode "move" {
+	bindsym $mod+Tab focus right
+
+	bindsym Left	move left
+	bindsym Down	move down
+	bindsym Up	move up
+	bindsym Right	move right
+
+	bindsym h	move left
+	bindsym j	move down
+	bindsym k	move up
+	bindsym	l	move right
+
+	# Back to normal
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# start rofi (a program launcher)
+bindsym $mod+space exec rofi -dpi 220 -show run  -font "System San Francisco Display 18"
+bindsym $mod+Tab exec rofi -dpi 220 -show window  -font "System San Francisco Display 18"
+
+font pango:System San Francisco Display 0
+
+for_window [class="^.*"] border pixel 0
+for_window [class="google-chrome"] border pixel 10
+for_window [class="pop-up"] floating enable
+for_window [class="task-dialog"] floating enable
+for_window [class="float"] floating enable
+
+bindsym $mod+r mode "resize"
+
+# SHortcut to move things to different monitors
+bindsym $mod+Right move container to output right
+bindsym $mod+Left move container to output left
+
+#Gaps Setup
+gaps inner 16
+gaps outer 0
+gaps top -18
+default_border none
+
+
+# swap caps lock and escape
+#exec_always --no-startup-id xmodmap -e "clear lock"
+#exec_always --no-startup-id xmodmap -e "keycode 9 = Caps_Lock NoSymbol Caps_Lock"
+exec_always --no-startup-id xmodmap -e "keycode 66 = Escape NoSymbol Escape"
+
