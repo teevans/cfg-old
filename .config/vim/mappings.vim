@@ -1,8 +1,8 @@
 " Faster Split Moving
-:nnoremap <C-L> <C-W><C-L>
-:nnoremap <C-K> <C-W><C-K>
-:nnoremap <C-J> <C-W><C-J>
-:nnoremap <C-H> <C-W><C-L>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-H> <C-W><C-L>
 "                           Faster Save
 nnoremap <leader>m          :w<CR>
 "                           Turn Edit Snippets
@@ -79,6 +79,9 @@ nmap <silent> <leader>j <Plug>(ale_next_wrap)
 " Remapping Control I and Tab to make things work a little better
 nnoremap <Tab> za
 nnoremap <F6> <C-i>
+
+" C# Autoremaps
+autocmd BufWritePre *.cs :OmniSharpCodeFormat
 
 " Base64 Helpers
 " 1. base64-encode(visual-selection) -> F2 -> encoded base64-string
