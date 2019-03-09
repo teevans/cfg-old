@@ -14,6 +14,7 @@ plugins=(
   osx
   brew
   kubectl
+  zsh-nvm
   zsh-autosuggestions
 )
 
@@ -92,8 +93,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
 export KEYTIMEOUT=1
 
-# Adds Autocomplete for Tmuxinator
-source ~/.bin/tmuxinator.zsh
 
 # Add autocomplete for Helm
 if [ $commands[helm] ]; then
