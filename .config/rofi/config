@@ -3,8 +3,8 @@ rofi.color-urgent: #cc141f29, #f3f4f5, #cc141f29, #cc141f29, #ff9800
 rofi.color-active: #cc141f29, #f3f4f5, #cc141f29, #cc141f29, #ff9800
 rofi.lines: 5
 rofi.bw: 0
-rofi.padding: 900
-rofi.width: 3840
+rofi.padding: 300
+rofi.width: 1920
 rofi.eh: 2
 !rofi.separator-style: solid
 rofi.hide-scrollbar: true

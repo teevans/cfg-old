@@ -53,7 +53,6 @@ Plug 'jeetsukumaran/vim-buffergator'    " Buffer management
 Plug 'michaeljsmith/vim-indent-object'  " Indent text object
 Plug 'radenling/vim-dispatch-neovim'    " Neovim dispatch
 Plug 'janko-m/vim-test'                 " Testing
-Plug 'kassio/neoterm'                   " Testing
 Plug 'kchmck/vim-coffee-script'         " Coffeescript
 Plug 'junegunn/gv.vim'                  " Git commit browser
 Plug 'roman/golden-ratio'               " Window sizing
@@ -68,7 +67,6 @@ Plug 'ternjs/tern_for_vim'
 Plug 'pangloss/vim-javascript'
 Plug 'craigemery/vim-autotag'
 Plug 'Shougo/vimproc.vim', { 'do': 'make'}
-Plug 'Quramy/tsuquyomi'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'}
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh'}
 Plug 'epilande/vim-react-snippets'
@@ -83,11 +81,11 @@ Plug 'roxma/nvim-yarp'
 Plug 'uber/prototool', { 'rtp': 'vim/prototool' }
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'tpope/vim-dadbod'
-Plug 'jparise/vim-graphql'
 Plug 'scrooloose/nerdcommenter'
 Plug 'danro/rename.vim'
 Plug 'mattn/emmet-vim'
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'Quramy/tsuquyomi'
 
 
 

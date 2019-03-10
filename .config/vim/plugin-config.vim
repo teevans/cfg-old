@@ -97,10 +97,10 @@ let g:go_auto_sameids = 1
 
 " Ale 
 let g:ale_fixers = {
-	\'javascript': ['eslint'],
-	\'javascript.jsx': ['eslint'],
-	\'typescript': ['tslint'],
-	\'typescript.jsx': ['tslint'],
+	\'javascript': ['eslint', 'prettier'],
+	\'javascript.jsx': ['eslint', 'prettier'],
+	\'typescript': ['tslint', 'prettier'],
+	\'typescript.jsx': ['tslint', 'prettier'],
 	\'css': ['prettier'],
 	\'html': ['prettier'],
 	\}

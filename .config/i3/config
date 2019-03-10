@@ -1,42 +1,34 @@
 # Setup Work Monitors
+
 # Startup Polybar
 exec_always --no-startup-id ~/.config/polybar/polybar.sh 
+
+# Setup compton Rendered
 exec_always --no-startup-id compton &
+
+# Setup Dunst for notifications
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
+
 # Set Key Speed
 exec xset r rate 150 60
+
 # Setup the wallpaper
 exec sh ~/.fehbg
-# Start Compositor
-
 
 # Set Mod to Windows Key
 set $mod Mod4
 
-bindsym $mod+z exec ~/.config/i3/kill_compton.sh
+# Lock Screen Setup
 bindsym $mod+Shift+p exec betterlockscreen --lock blur
-
-exec xautolock -detectsleep \
-  -time 3 -locker "betterlockscreen --lock blur" \
-  -notify 30 \
-  -notifier "notify-send -t 29000 -- 'LOCKING screen in 30 seconds'"
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec terminator
+
+# start Chrome
+bindsym $mod+c exec google-chrome
 
 # kill focused window
 bindsym $mod+q kill
@@ -133,10 +125,6 @@ bindsym $mod+Shift+e exec i3-msg exit
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
@@ -175,8 +163,8 @@ mode "move" {
 }
 
 # start rofi (a program launcher)
-bindsym $mod+space exec rofi -dpi 220 -show run  -font "System San Francisco Display 18"
-bindsym $mod+Tab exec rofi -dpi 220 -show window  -font "System San Francisco Display 18"
+bindsym $mod+space exec rofi -show run  -font "System San Francisco Display 18"
+bindsym $mod+Tab exec rofi  -show window  -font "System San Francisco Display 18"
 
 font pango:System San Francisco Display 0
 
@@ -198,9 +186,14 @@ gaps outer 0
 gaps top -18
 default_border none
 
-
 # swap caps lock and escape
-#exec_always --no-startup-id xmodmap -e "clear lock"
-#exec_always --no-startup-id xmodmap -e "keycode 9 = Caps_Lock NoSymbol Caps_Lock"
+exec_always --no-startup-id xmodmap -e "clear lock"
+exec_always --no-startup-id xmodmap -e "keycode 9 = Caps_Lock NoSymbol Caps_Lock"
 exec_always --no-startup-id xmodmap -e "keycode 66 = Escape NoSymbol Escape"
 
+bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 5 && notify_brightness"
+bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 5 && notify_brightness"
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5% && notify_sound"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5% && notify_sound"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle && notify_sound"
