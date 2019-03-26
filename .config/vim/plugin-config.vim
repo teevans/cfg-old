@@ -11,7 +11,7 @@ let g:buffergator_suppress_keymaps = 1
 "
 let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_buffers_jump = 1
-let g:fzf_height = 10
+let g:fzf_height = 11
 
 " CTRL-A CTRL-Q to select all and build quickfix list
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
@@ -61,13 +61,6 @@ let g:airline_section_c                                   = '%t'
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
-" Ultiships
-let g:UltiSnipsExpandTrigger="<C-s>"
-let g:UltiSnipsSnippetsDir="~/.config/vim/UltiSnips"
-let g:UltiSnipsEditSplit="vertical"
-
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
 " Go Lang
 let g:go_fmt_fail_silently = 0
 let g:go_fmt_command = "goimports"
@@ -113,6 +106,7 @@ let g:ale_linters = {
 	\'typescript': ['tslint'],
 	\'typescript.jsx': ['tslint'],
 	\'proto': ['prototool'],
+	\'php': ['php'],
 	\}
 
 let g:ale_fix_on_save = 1
@@ -159,8 +153,13 @@ augroup omnisharp_commands
     autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
 augroup END
 
-" COC Autocomplete Plugin
 
+" Set file type to blade for blade file types 
+" This really shouldn't go here. 
+autocmd BufRead,BufNewFile *.blade.php set filetype=blade
+
+
+" COC Autocomplete Plugin
 " always show signcolumns
 set signcolumn=yes
 
@@ -182,3 +181,8 @@ endfunction<Paste>
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<C-s>"
+let g:UltiSnipsSnippetsDir="/home/tevans/.config/vim/UltiSnips"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/vim/UltiSnips']
+let g:UltiSnipsEditSplit="vertical"

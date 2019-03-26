@@ -2,13 +2,11 @@
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-J> <C-W><C-J>
-nnoremap <C-H> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 "                           Faster Save
 nnoremap <leader>m          :w<CR>
 "                           Turn Edit Snippets
 nnoremap <leader>es         :UltiSnipsEdit<CR>
-"                           Toggle cursorline
-nnoremap <leader>c          :set cursorline! cursorline?<CR>
 "                           Edit .vimrc
 nnoremap <leader>vm         :e ~/.vimrc<CR>
 "                           Reload .vimrc
@@ -32,6 +30,7 @@ nmap s                      <Plug>(easymotion-overwin-f)
 "                           EasyMotion search
 map  <leader><leader>/      <Plug>(easymotion-sn)
 omap <leader><leader>/      <Plug>(easymotion-tn)
+
 " Hides highlighting on search
 nnoremap <leader><CR> :noh<CR>
 "                           Search open buffers

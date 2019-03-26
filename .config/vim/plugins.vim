@@ -1,23 +1,14 @@
 " This file is in charge of maintaing the VimPlug List
 
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+if empty(glob('~/.config/vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall
 endif
 
 " plugins
 
-if has('nvim')
-  call plug#begin('~/.config/nvim/bundle')
-else
-  call plug#begin('~/.config/vim/bundle')
-endif
-
-" core plugins
-if !has('nvim')
-  Plug 'tpope/vim-sensible'               " Sensible defaults
-endif
+call plug#begin('~/.config/vim/bundle')
 
 Plug 'flazz/vim-colorschemes'           " Set of color schemes
 Plug 'scrooloose/nerdtree'              " Directory browsing
@@ -51,9 +42,7 @@ Plug 'yssl/QFEnter'                     " Choose window for quick fix open
 Plug 'vim-ruby/vim-ruby'                " Ruby
 Plug 'jeetsukumaran/vim-buffergator'    " Buffer management
 Plug 'michaeljsmith/vim-indent-object'  " Indent text object
-Plug 'radenling/vim-dispatch-neovim'    " Neovim dispatch
 Plug 'janko-m/vim-test'                 " Testing
-Plug 'kchmck/vim-coffee-script'         " Coffeescript
 Plug 'junegunn/gv.vim'                  " Git commit browser
 Plug 'roman/golden-ratio'               " Window sizing
 Plug 'tpope/vim-speeddating'            " Date inc/dec
@@ -78,7 +67,6 @@ Plug 'wincent/scalpel'
 Plug 'godlygeek/tabular'
 Plug 'davidhalter/jedi-vim'
 Plug 'roxma/nvim-yarp'
-Plug 'uber/prototool', { 'rtp': 'vim/prototool' }
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'tpope/vim-dadbod'
 Plug 'scrooloose/nerdcommenter'
@@ -86,7 +74,8 @@ Plug 'danro/rename.vim'
 Plug 'mattn/emmet-vim'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'Quramy/tsuquyomi'
-
-
+Plug 'sjl/gundo.vim'
+Plug 'StanAngeloff/php.vim'
+Plug 'jwalton512/vim-blade'
 
 call plug#end()

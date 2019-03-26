@@ -4,6 +4,13 @@
       "command": "bingo",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
+    },
+    {
+    "languageserver": {
+        "intelephense": {
+            "command": "node",
+            "args": ["/home/tevans/.nvm/versions/node/v10.15.3/lib/node_modules/intelephense/lib/intelephense.js", "--stdio"],
+            "filetypes": ["php"]
+        }
     }
-  }
 }

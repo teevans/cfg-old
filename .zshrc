@@ -75,6 +75,7 @@ export PATH=/Library/PostgreSQL/10/bin:$PATH
 export PATH=/usr/local/go:$PATH
 export PATH=$HOME/.config/polybar/scripts:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.config/composer/vendor/bin:$PATH
 export EDITOR=vim
 export PATH="$HOME/Library/Python/2.7/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 

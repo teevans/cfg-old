@@ -118,10 +118,4 @@ autocmd FileType python  setlocal tabstop=4 shiftwidth=4 softtabstop=4
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
-" Seamless Vim Tmux Integration
-" https://sunaku.github.io/tmux-select-pane.html
-"
-let progname = substitute($VIM, '.*[/\\]', '', '')
-set title titlestring=%{progname}\ %f\ +%l\ #%{tabpagenr()}.%{winnr()}
-if &term =~ '^screen' && !has('nvim') | exe "set t_ts=\e]2; t_fs=\7" | endif
 
